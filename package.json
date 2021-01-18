@@ -1,0 +1,11 @@
+{
+  "name": "theater_seating_algorithm",
+  "version": "1.0.0",
+  "description": "Create a datastructure that defines a seating layout for a hall in a venue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marcin Robak",
+  "license": "ISC"
+}
