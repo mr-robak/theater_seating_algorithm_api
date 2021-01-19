@@ -59,14 +59,14 @@ module.exports = {
     // rank - desired seat rank
     let seatsCounter = group;
     const numberOfSections = Object.keys(theater).length;
-
     //loop through sections
-    for (section = 1; section <= numberOfSections; ++section) {
+    let section = 1;
+    while (section <= numberOfSections) {
       const numberOfRows = Object.keys(theater[section].rows).length;
       //loop through rows
       let rowNr = 1;
       while (rowNr <= numberOfRows) {
-        // console.log("Row:", rowNr);
+        console.log("Row:", rowNr);
         const row = theater[section].rows[rowNr];
         //check if current row matches the rank
         if (row.rank === rank) {
@@ -77,9 +77,8 @@ module.exports = {
           // if no free space is found jump to the next row in this loop
           if (index === -1) {
             console.log(
-              `no seats in row ${row}, section: ${theater[section].name}`
+              `no seats in row ${rowNr}, section: ${theater[section].name}`
             );
-            console.log("continue");
             ++rowNr;
           } else {
             // change status of found seat from null to a group number
@@ -91,15 +90,15 @@ module.exports = {
             --seatsCounter;
             console.log("seatsCounter", seatsCounter);
           }
+        } else {
+          ++rowNr;
         }
         if (seatsCounter === 0) {
-          console.log("returning theater");
           return theater;
         }
-        // ++rowNr;
       }
+      ++section;
     }
-
     return theater;
   },
 };
