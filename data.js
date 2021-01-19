@@ -1,5 +1,3 @@
-module.exports.groupOfUsers = [1, 3, 4, 4, 5, 1, 2, 4];
-
 module.exports.theater = {
   1: {
     name: "Main Hall",
@@ -72,19 +70,6 @@ module.exports.theater = {
         ],
       },
       6: {
-        rank: 3,
-        seats: [
-          { number: 1, status: null, feature: ["aisle"] },
-          { number: 2, status: null, feature: [] },
-          { number: 3, status: null, feature: [] },
-          { number: 4, status: null, feature: [] },
-          { number: 5, status: null, feature: [] },
-          { number: 6, status: null, feature: [] },
-          { number: 7, status: null, feature: [] },
-          { number: 8, status: null, feature: ["aisle"] },
-        ],
-      },
-      7: {
         rank: 3,
         seats: [
           { number: 1, status: null, feature: ["aisle"] },
