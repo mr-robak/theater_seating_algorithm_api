@@ -3,9 +3,9 @@ const cors = require("cors");
 const fs = require("fs");
 const bodyParser = require("body-parser");
 
-const userRouter = require("./routers/userRouter");
-const adminRouter = require("./routers/adminRouter");
-const rootRouter = require("./routers/rootRouter");
+const userRouter = require("./router/userRouter");
+const adminRouter = require("./router/adminRouter");
+const rootRouter = require("./router/rootRouter");
 
 const app = express();
 

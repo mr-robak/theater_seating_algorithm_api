@@ -5,8 +5,6 @@ const layout = require("../tools/layout");
 
 const router = new Router();
 
-const eventLayout = JSON.parse(fs.readFileSync("./db/event_1_data.json"));
-
 // "/" <= this is endpoint prefix for this router
 
 router.get("/theater-layout", (request, response) => {
@@ -14,6 +12,8 @@ router.get("/theater-layout", (request, response) => {
 });
 
 router.get("/event-layout", (request, response) => {
+  const eventLayout = JSON.parse(fs.readFileSync("./db/event_1_data.json"));
+  console.log(11111);
   response.send(eventLayout);
 });
 
