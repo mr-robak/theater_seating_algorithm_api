@@ -1,5 +1,4 @@
 module.exports = {
-  //console.logs theater layout
   print: function (theater, showSeatNr) {
     // showSeatNr === true - will print seat numbers instead of seat.status
     for (section = 1; section <= Object.keys(theater).length; ++section) {
@@ -91,7 +90,6 @@ module.exports = {
             // change status of found seat from null to a group number
             theater[section].rows[rowNr].seats[index].status = group;
             // console.log(
-            //   11111,
             //   `found free seat - section: ${theater[section].name} row: ${rowNr} / index: ${index}`
             // );
             --seatsCounter;
