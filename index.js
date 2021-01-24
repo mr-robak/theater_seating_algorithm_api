@@ -25,9 +25,3 @@ app.listen(port, () => {
   console.log(`
   Listening at localhost:${port}`);
 });
-
-//Prints layout to console
-// const theaterLayout = JSON.parse(fs.readFileSync("./db/theater_data.json"));
-// const eventLayout = JSON.parse(fs.readFileSync("./db/event_1_data.json"));
-// const layout = require("./tools/layout");
-// layout.print(eventLayout, false);

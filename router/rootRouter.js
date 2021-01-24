@@ -13,9 +13,11 @@ router.get("/theater-layout", (request, response) => {
 
 router.get("/event-layout/:id", (request, response) => {
   const id = request.params.id * 1;
+
   const eventLayout = JSON.parse(fs.readFileSync(`./db/event_${id}_data.json`));
-  console.log(11111, request.params.id);
+
   response.send(eventLayout);
+
   layout.print(eventLayout, false);
 });
 
