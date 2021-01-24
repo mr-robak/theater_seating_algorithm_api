@@ -6,19 +6,20 @@ const layout = require("../tools/layout");
 
 const router = new Router();
 
-const eventLayout = JSON.parse(fs.readFileSync("./db/event_1_data.json"));
 // console.log("eventLayout", eventLayout);
 // "/admin" <= this is endpoint prefix for this router
 
-router.post("/block", (request, response) => {
+router.post("/block/:id", (request, response) => {
+  const id = request.params.id;
+  const eventLayout = JSON.parse(fs.readFileSync(`./db/event_${id}_data.json`));
+
   const blockedSeats = request.body;
-  console.log("blockedSeats", blockedSeats);
   const updatedLayout = { ...eventLayout };
+
+  console.log("blockedSeats", blockedSeats, "id", id);
+
   for (const aSeat of blockedSeats) {
     const { section, row, seat } = aSeat;
-    console.log(
-      updatedLayout[section].rows[row].seats[seat - 1].status === "B"
-    );
     const reverseStatus =
       updatedLayout[section].rows[row].seats[seat - 1].status === "B"
         ? null
@@ -27,25 +28,23 @@ router.post("/block", (request, response) => {
   }
 
   const data = JSON.stringify(updatedLayout);
-  fs.writeFile("./db/event_1_data.json", data, (err) => {
+  fs.writeFile(`./db/event_${id}_data.json`, data, (err) => {
     if (err) throw err;
   });
   response.send(data);
+  layout.print(JSON.parse(data), false);
 });
 
-router.put("/clear", (request, response) => {
+router.post("/clear/:id", (request, response) => {
+  const id = request.params.id;
   if (request.body.secret === "123456") {
-    console.log("RESET", request.body);
-
-    // const newLayout = JSON.parse(fs.readFileSync("./db/theater_data.json"));
     const newLayout = fs.readFileSync("./db/theater_data.json");
-    // JSON.stringify(newLayout)
-    fs.writeFile("./db/event_1_data.json", newLayout, (err) => {
+    fs.writeFile(`./db/event_${id}_data.json`, newLayout, (err) => {
       if (err) throw err;
     });
-    // console.log(newLayout);
-    // console.log(newLayout[1].rows[1].seats[7]);
-    response.send(newLayout);
+    const data = JSON.parse(newLayout);
+    response.send(data);
+    layout.print(data, false);
   }
 });
 
